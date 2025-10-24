@@ -36,7 +36,7 @@ serverless-stepfn-etl/
 ├── tests/
 │ ├── test_ingest_lambda.py
 │ └── test_glue_transform.py
-├── ci-cd/
+├── .github/
 │ ├── github-actions.yaml
 │ └── sam-buildspec.yml
 ├── docs/

@@ -1,0 +1,15 @@
+# name: ci/cd pipeline for serverless stepfn etl
+
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
+
+# env: 
+#   PYTHON_VERSION: '3.12'
+#   AWS_REGION: us-east-1
+
+# Add jobs: test, lint, terraform validate, deploy-dev (checkout code, configure aws credentials, setup python, package lambda functions, setup terraform, setup terragrunt, terragrunt init, plan, apply)

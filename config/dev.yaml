@@ -1,0 +1,12 @@
+# Dev environment config 
+
+environment: dev
+aws_region: us-east-1
+
+# API configuration : type, rate_limit, timeout
+# Schedule : cron expression, enabled = true
+# Lambda properties : timeout, memory, runtime
+# Glue properties : version, worker_type, number_of_workers, timeout, enable_spark_ui = true
+# Storage: raw_retention_days, curated_retention_days, enable_versioning = true
+# Monitoring: log_retention_days, alert_email, enable_alarms 
+# Tags: environment, project, managedby

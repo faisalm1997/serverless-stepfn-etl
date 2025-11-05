@@ -1,0 +1,1 @@
+# Script to test lambda handler for API ingestion

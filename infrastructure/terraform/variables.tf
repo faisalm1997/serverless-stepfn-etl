@@ -1,0 +1,1 @@
+# TODO: Add global variables for scheduled etl pipeline tf config

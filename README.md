@@ -11,8 +11,7 @@ scheduled-etl-pipeline/
 │   ├── ARCHITECTURE.md
 │   ├── API_GUIDE.md
 │   ├── GLUE_GUIDE.md
-│   ├── STEP_FUNCTIONS_GUIDE.md
-│   └── TROUBLESHOOTING.md
+│   └── STEP_FUNCTIONS_GUIDE.md
 ├── infrastructure/
 │   ├── terraform/
 │   │   ├── main.tf
@@ -28,7 +27,8 @@ scheduled-etl-pipeline/
 │   └── terragrunt/
 │       ├── terragrunt.hcl
 │       └── dev/
-│           └── terragrunt.hcl
+|          ├── terragrunt.hcl
+│          └── env.hcl
 ├── src/
 │   ├── lambda/
 │   │   ├── api_ingestion/
@@ -43,9 +43,6 @@ scheduled-etl-pipeline/
 │       ├── jobs/
 │       │   ├── transform_job.py
 │       │   └── validate_job.py
-│       ├── scripts/
-│       │   ├── data_quality.py
-│       │   └── transformations.py
 │       └── tests/
 │           └── test_transformations.py
 ├── step_functions/
@@ -55,7 +52,6 @@ scheduled-etl-pipeline/
 │   ├── package_lambda.sh
 │   ├── deploy.sh
 │   ├── test_api.sh
-│   ├── run_glue_local.sh
 │   └── cleanup.sh
 ├── tests/
 │   ├── integration/

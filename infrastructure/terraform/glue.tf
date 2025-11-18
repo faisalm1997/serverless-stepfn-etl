@@ -11,7 +11,7 @@ resource "aws_glue_catalog_database" "glue_database" {
 
 # Upload glue scripts from src/glue to s3 script bucket 
 
-resource "aws_s3_bucket_object" "glue_scripts" {
+resource "aws_s3_object" "glue_scripts" {
   for_each = fileset("${path.module}/../../src/glue", "**/*.py")
 
   bucket = aws_s3_bucket.scripts_bucket.id
@@ -25,7 +25,7 @@ resource "aws_s3_bucket_object" "glue_scripts" {
 
 resource "aws_glue_job" "glue_etl_job" {
   name     = "${var.project_name}-${var.environment}-glue-etl-job"
-  role_arn = aws_iam_role.glue_execution_role.arn
+  role_arn = aws_iam_role.glue_execution.arn
 
   command {
     name            = "glueetl"
@@ -62,7 +62,7 @@ resource "aws_glue_job" "glue_etl_job" {
 resource "aws_glue_crawler" "glue_crawler" {
   name          = "${var.project_name}-${var.environment}-glue-crawler"
   database_name = aws_glue_catalog_database.glue_database.name
-  role          = aws_iam_role.glue_execution_role.arn
+  role          = aws_iam_role.glue_execution.arn
   table_prefix  = "curated_"
 
   s3_target {

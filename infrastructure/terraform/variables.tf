@@ -68,3 +68,9 @@ variable "glue_version" {
   type        = string
   default     = "3.0"
 }
+
+variable "lambda_function_name" {
+  description = "The name of the Lambda function."
+  type        = string
+  default     = "etl_lambda"
+}

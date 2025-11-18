@@ -38,5 +38,5 @@ output "state_machine_arn" {
 
 output "lambda_function_name" {
   description = "Name of the Lambda function"
-  value       = aws_lambda_function.etl_lambda.function_name
+  value       = aws_lambda_function.lambda_ingestion.function_name
 }

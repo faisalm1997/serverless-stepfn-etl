@@ -26,7 +26,7 @@ resource "aws_iam_role" "lambda_execution" {
 
 resource "aws_iam_role_policy" "lambda_s3_cloudwatch_policy" {
   name = "lambda-s3-cloudwatch-policy"
-  role = aws_iam_role.lambda_execution_role.id
+  role = aws_iam_role.lambda_execution.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -86,7 +86,7 @@ resource "aws_iam_role" "glue_execution" {
 
 resource "aws_iam_role_policy" "glue_s3_catalog_policy" {
   name = "glue-s3-catalog-policy"
-  role = aws_iam_role.glue_execution_role.id
+  role = aws_iam_role.glue_execution.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -157,7 +157,7 @@ resource "aws_iam_role" "stp_fn_execution" {
 
 resource "aws_iam_role_policy" "stepfn_lambda_glue_policy" {
   name = "stepfn-lambda-glue-policy"
-  role = aws_iam_role.stp_fn_execution_role.id
+  role = aws_iam_role.stp_fn_execution.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -167,7 +167,7 @@ resource "aws_iam_role_policy" "stepfn_lambda_glue_policy" {
         Action = [
           "lambda:InvokeFunction"
         ]
-        Resource = aws_lambda_function.etl_lambda.arn
+        Resource = aws_lambda_function.lambda_ingestion.arn
       },
       {
         Effect = "Allow"
@@ -177,7 +177,7 @@ resource "aws_iam_role_policy" "stepfn_lambda_glue_policy" {
           "glue:GetJobRuns",
           "glue:BatchStopJobRun"
         ]
-        Resource = aws_glue_job.etl_glue_job.arn
+        Resource = aws_glue_job.glue_etl_job.arn
       },
       {
         Effect = "Allow"

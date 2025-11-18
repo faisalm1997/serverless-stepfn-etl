@@ -42,9 +42,9 @@ resource "aws_iam_role_policy" "lambda_s3_cloudwatch_policy" {
           aws_s3_bucket.raw_bucket.arn,
           "${aws_s3_bucket.raw_bucket.arn}/*",
           aws_s3_bucket.curated_bucket.arn,
-            "${aws_s3_bucket.curated_bucket.arn}/*",
-            aws_s3_bucket.scripts_bucket.arn,
-            "${aws_s3_bucket.scripts_bucket.arn}/*"
+          "${aws_s3_bucket.curated_bucket.arn}/*",
+          aws_s3_bucket.scripts_bucket.arn,
+          "${aws_s3_bucket.scripts_bucket.arn}/*"
         ]
       },
       {
@@ -97,7 +97,7 @@ resource "aws_iam_role_policy" "glue_s3_catalog_policy" {
           "s3:PutObject",
           "s3:GetObject",
           "s3:ListBucket",
-        "s3:DeleteObject"
+          "s3:DeleteObject"
         ]
         Resource = [
           aws_s3_bucket.raw_bucket.arn,
@@ -105,7 +105,7 @@ resource "aws_iam_role_policy" "glue_s3_catalog_policy" {
           aws_s3_bucket.curated_bucket.arn,
           "${aws_s3_bucket.curated_bucket.arn}/*",
           aws_s3_bucket.scripts_bucket.arn,
-            "${aws_s3_bucket.scripts_bucket.arn}/*"
+          "${aws_s3_bucket.scripts_bucket.arn}/*"
         ]
       },
       {
@@ -119,7 +119,7 @@ resource "aws_iam_role_policy" "glue_s3_catalog_policy" {
           "arn:aws:glue:${var.aws_region}:${data.aws_caller_identity.current.account_id}:table/*/*"
         ]
       },
-          {
+      {
         Effect = "Allow"
         Action = [
           "logs:CreateLogGroup",
@@ -175,7 +175,7 @@ resource "aws_iam_role_policy" "stepfn_lambda_glue_policy" {
           "glue:StartJobRun",
           "glue:GetJobRun",
           "glue:GetJobRuns",
-            "glue:BatchStopJobRun"
+          "glue:BatchStopJobRun"
         ]
         Resource = aws_glue_job.etl_glue_job.arn
       },
@@ -201,7 +201,7 @@ resource "aws_iam_role_policy" "stepfn_lambda_glue_policy" {
           "logs:DescribeResourcePolicies",
           "logs:DescribeLogGroups"
         ]
-        "*"
+        Resource = "*"
       }
     ]
   })

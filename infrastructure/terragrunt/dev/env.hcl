@@ -1,6 +1,0 @@
-# Environment-specific variables for dev
-
-locals {
-  environment = "dev"
-  aws_region  = "us-east-1"
-}

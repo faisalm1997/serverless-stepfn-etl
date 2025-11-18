@@ -19,7 +19,7 @@ resource "aws_lambda_function" "lambda_ingestion" {
   environment {
     variables = {
       RAW_BUCKET_NAME = aws_s3_bucket.raw_bucket.bucket
-    #   API_ENDPOINT    = var.api_endpoint
+      #   API_ENDPOINT    = var.api_endpoint
     }
   }
 

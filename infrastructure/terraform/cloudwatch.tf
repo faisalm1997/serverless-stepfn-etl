@@ -16,7 +16,7 @@ resource "aws_cloudwatch_metric_alarm" "lambda_duration_anomaly" {
   comparison_operator = "LessThanLowerOrGreaterThanUpperThreshold"
   evaluation_periods  = 2
   threshold_metric_id = "ad1"
-  
+
   metric_query {
     id          = "m1"
     return_data = true
@@ -30,10 +30,10 @@ resource "aws_cloudwatch_metric_alarm" "lambda_duration_anomaly" {
       }
     }
   }
-  
+
   metric_query {
-    id          = "ad1"
-    expression  = "ANOMALY_DETECTION_BAND(m1, 2)"
+    id         = "ad1"
+    expression = "ANOMALY_DETECTION_BAND(m1, 2)"
   }
 }
 

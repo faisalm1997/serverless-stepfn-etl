@@ -235,7 +235,7 @@ resource "aws_iam_role" "eventbridge_execution" {
 
 resource "aws_iam_role_policy" "eventbridge_stepfn_policy" {
   name = "eventbridge-stepfn-policy"
-  role = aws_iam_role.eventbridge_execution_role.id
+  role = aws_iam_role.eventbridge_execution.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -245,7 +245,7 @@ resource "aws_iam_role_policy" "eventbridge_stepfn_policy" {
         Action = [
           "states:StartExecution"
         ]
-        Resource = aws_sfn_state_machine.stepfn_etl.arn
+        Resource = aws_sfn_state_machine.etl_state_machine.arn
       }
     ]
   })

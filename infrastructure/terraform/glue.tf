@@ -47,10 +47,10 @@ resource "aws_glue_job" "glue_etl_job" {
     "--GLUE_DATABASE" = aws_glue_catalog_database.glue_database.name
   }
 
-  glue_version      = "3.0"
-  worker_type       = "G.1X"
-  number_of_workers = 2
-  timeout           = 30
+  glue_version      = var.glue_version
+  worker_type       = var.glue_worker_type
+  number_of_workers = var.glue_number_of_workers
+  timeout           = var.glue_job_timeout
 
   tags = merge(var.common_tags, {
     Name = "${var.project_name}-${var.environment}-glue-etl-job"

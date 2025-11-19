@@ -4,9 +4,44 @@ environment: dev
 aws_region: us-east-1
 
 # API configuration : type, rate_limit, timeout
+api:
+  type: REST
+  rate_limit: 1000
+  timeout: 30
+
 # Schedule : cron expression, enabled = true
+schedule:
+  cron: "rate(1 day)"
+  enabled: true
+
 # Lambda properties : timeout, memory, runtime
+lambda:
+  timeout: 300
+  memory: 512
+  runtime: python3.9
+
 # Glue properties : version, worker_type, number_of_workers, timeout, enable_spark_ui = true
+glue:
+  version: "3.0"
+  worker_type: G.1X
+  number_of_workers: 10
+  timeout: 60
+  enable_spark_ui: true
+
 # Storage: raw_retention_days, curated_retention_days, enable_versioning = true
+storage:
+  raw_retention_days: 30
+  curated_retention_days: 90
+  enable_versioning: true
+
 # Monitoring: log_retention_days, alert_email, enable_alarms 
+monitoring:
+  log_retention_days: 14
+  alert_email: "faisalmomoniat@gmail.com"
+  enable_alarms: true
+
 # Tags: environment, project, managedby
+tags:
+  environment: dev
+  project: serverless-stepfn-etl
+  managedby: terraform

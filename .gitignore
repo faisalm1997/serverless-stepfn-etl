@@ -34,3 +34,10 @@ planout
 *.tfstate.backup
 
 .terragrunt-cache
+
+.env
+.env.*.local
+
+.aws/credentials
+.aws/config
+.aws/sso/cache

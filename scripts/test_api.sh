@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "🧪 Testing API ingestion Lambda..."
+echo "Testing API ingestion Lambda..."
 
 # Get lambda function name from Terraform output
 # Add a test event 

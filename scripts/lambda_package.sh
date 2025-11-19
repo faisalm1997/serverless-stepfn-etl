@@ -1,11 +1,30 @@
 #!/bin/bash 
+set -e
 
-# Create script to package lambda function code and dependencies into a zip file for deployment
+echo "Packaging Lambda ingestion function..."
 
-# cd src/lambda
+cd "$(dirname "$0")/../src/lambda"
+mkdir -p build
+
+# Package Ingestion Lambda
+echo ""
+echo "Packaging ingestion Lambda..."
+rm -rf package
 
 # Install dependencies
-# Copy handler 
-# Create ZIP
+python3 -m pip install pandas boto3 --quiet -t package/
 
-echo "Lambda Packagd: lambda_ingestion.zip created successfully."
+cp lambda_ingestion.py package/
+
+cd package
+zip -r ../build/lambda_ingestion.zip . -q
+cd ..
+
+LAMBDA_INGESTION_SIZE=$(du -h build/lambda_ingestion.zip | cut -f1)
+echo "Ingestion Lambda: $LAMBDA_INGESTION_SIZE"
+rm -rf package
+
+echo ""
+echo "Summary:"
+echo ""
+echo "Lambda Packaged: lambda_ingestion.zip created successfully, size: $LAMBDA_INGESTION_SIZE"
